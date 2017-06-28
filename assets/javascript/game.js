@@ -4,14 +4,28 @@
 var wins = 0;
 var losses = 0;
 var animalsIndex = 0;
-var animals = ["horse", "dog", "cat", "elephant", "lion", "tiger", "zebra", "monkey", "duck", "cow"];
+//var animals = ["horse", "dog", "cat", "elephant", "lion", "tiger", "zebra", "monkey", "duck", "cow"];
 
+//defining animals as objects;
+var horse = {name:"horse", picture:"assets/images/horse.jpg", audio:"assets/audios/horse.mp3"};
+var dog = {name:"dog", picture:"assets/images/dog.jpg", audio:"assets/audios/dog.mp3"};
+var cat = {name:"cat", picture:"assets/images/cat.jpg", audio:"assets/audios/cat.mp3"};
+var elephant = {name:"elephant", picture:"assets/images/elephant.jpg", audio:"assets/audios/elephant.mp3"};
+var lion = {name:"lion", picture:"assets/images/lion.jpg", audio:"assets/audios/lion.mp3"};
+var tiger = {name:"tiger", picture:"assets/images/tiger.jpg", audio:"assets/audios/tiger.mp3"};
+var zebra = {name:"zebra", picture:"assets/images/zebra.jpg", audio:"assets/audios/zebra.mp3"};
+var monkey = {name:"monkey", picture:"assets/images/monkey.jpg", audio:"assets/audios/monkey.mp3"};
+var duck = {name:"duck", picture:"assets/images/duck.jpg", audio:"assets/audios/duck.mp3"};
+var cow = {name:"cow", picture:"assets/images/cow.jpg", audio:"assets/audios/cow.mp3"};
+
+//creating animals, an array of animals objects
+var animals = [ horse, dog, cat, elephant, lion, tiger, zebra, monkey, duck, cow];
 
 // variables for each round. they are reset each round
 // a game round is when displaying a new word
 var guessesLeft = 10;
 var guessedLetters = [];
-var currentAnimal = "";
+var currentAnimal = {};
 var blanks = "";
 
 
@@ -21,7 +35,7 @@ var resetGame = function(){
 	wins = 0;
 	losses = 0;
 	animalsIndex = 0;
-	currentAnimal = "";
+	currentAnimal = {}
 	resetRound();
 }
 
@@ -35,7 +49,7 @@ var resetRound = function(){
 	currentAnimal = animals[animalsIndex];
 	//animalsIndex++;
 	
-	for(var i=0; i < currentAnimal.length; i++){
+	for(var i=0; i < currentAnimal.name.length; i++){
 
 		blanks+= "-";
 	}
@@ -85,7 +99,7 @@ var	checkCompletion = function(str1, str2, num){
 
 	if(str1 === str2){
 		wins++;
-		document.getElementById("selected-image").src = "assets/images/animal"+animalsIndex+".jpg";
+		document.getElementById("selected-image").src = currentAnimal.picture;
 		return true;
 	}
 
@@ -108,10 +122,10 @@ document.onkeypress = function(event){
 		var match = false;
 
 
-		for(var i = 0; i<currentAnimal.length; i++ ){
+		for(var i = 0; i<currentAnimal.name.length; i++ ){
 
 
-			if( userGuess === currentAnimal.charAt(i)){
+			if( userGuess === currentAnimal.name.charAt(i)){
 			
 				blanks = replaceLetter(blanks, i, userGuess);
 				match = true;
@@ -130,7 +144,7 @@ document.onkeypress = function(event){
 		document.getElementById("word").innerHTML = blanks;
 
 
-		var complete = checkCompletion (blanks, currentAnimal, guessesLeft);
+		var complete = checkCompletion (blanks, currentAnimal.name, guessesLeft);
 
 		if (complete) {
 			animalsIndex++;
