@@ -4,7 +4,8 @@
 var wins = 0;
 var losses = 0;
 var animalsIndex = 0;
-var animals = ["horse", "dog", "cat"];//, "elephant", "lion", "tiger", "zebra"];
+var animals = ["horse", "dog", "cat", "elephant", "lion", "tiger", "zebra", "monkey", "duck", "cow"];
+
 
 // variables for each round. they are reset each round
 // a game round is when displaying a new word
@@ -32,7 +33,7 @@ var resetRound = function(){
 	blanks = "";
 
 	currentAnimal = animals[animalsIndex];
-	animalsIndex++;
+	//animalsIndex++;
 	
 	for(var i=0; i < currentAnimal.length; i++){
 
@@ -84,6 +85,7 @@ var	checkCompletion = function(str1, str2, num){
 
 	if(str1 === str2){
 		wins++;
+		document.getElementById("selected-image").src = "assets/images/animal"+animalsIndex+".jpg";
 		return true;
 	}
 
@@ -131,6 +133,7 @@ document.onkeypress = function(event){
 		var complete = checkCompletion (blanks, currentAnimal, guessesLeft);
 
 		if (complete) {
+			animalsIndex++;
 			console.log("we are done");
 			console.log("Wins: " + wins);
 			document.getElementById("wins").innerHTML = wins;
@@ -151,6 +154,8 @@ document.onkeypress = function(event){
 
 		document.getElementById("remaining-guesses").innerHTML = guessesLeft; 
 	}
+
+
 	else{
 
 		console.log("Please enter a valid letter");
