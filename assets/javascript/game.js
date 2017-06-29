@@ -45,6 +45,7 @@ var resetRound = function(){
 	guessesLeft = 10;
 	guessedLetters = [];
 	blanks = "";
+	
 
 	currentAnimal = animals[animalsIndex];
 	//animalsIndex++;
@@ -100,6 +101,11 @@ var	checkCompletion = function(str1, str2, num){
 	if(str1 === str2){
 		wins++;
 		document.getElementById("selected-image").src = currentAnimal.picture;
+		var animalSoundSource = document.getElementById("animal-sound-source")
+		animalSoundSource.src = currentAnimal.audio;
+		document.getElementById("animal-sound").appendChild(animalSoundSource);
+		document.getElementById("animal-sound").play();
+
 		return true;
 	}
 
@@ -115,6 +121,8 @@ var	checkCompletion = function(str1, str2, num){
 document.onkeypress = function(event){
 
 	if(event.charCode >= 97 && event.charCode <=122 ){
+
+		document.getElementById("warning").innerHTML = "";
 
 		var userGuess = event.key;
 
@@ -155,6 +163,7 @@ document.onkeypress = function(event){
 			console.log("Losses: "+ losses);
 			document.getElementById("losses").innerHTML = losses;
 
+
 			if (animalsIndex < animals.length){	
 				console.log("It's a new round");
 				resetRound();
@@ -173,7 +182,8 @@ document.onkeypress = function(event){
 	else{
 
 		console.log("Please enter a valid letter");
+		document.getElementById("warning").innerHTML = "Please enter a valid letter";
 	}	
-	//console.log(guessedLetters);
+	
 }
 

@@ -2,30 +2,51 @@
 <html>
 <head>
 	<title>Hangman</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 
-<img src="assets/images/zooanimals.jpg" id="main-image">
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<img src="assets/images/zooanimals.jpg" id="main-image"  class="img-responsive">
+		</div>
+	</div>
 
-<div >
+	<div class="row">
+		<div class="col-md-4 col-md-offset-2">
+			<h2>Press any key to get started</h2>
+			<h3>Guess the name of an animal</h3>
+			<p>Wins</p>
+			<p id="wins">
+			<p>Losses</p>
+			<p id="losses"></p>
+			<p>Current Word</p>
+			<h1 id="word"></h1>
+			<p>Number of Guesses Remaining</p>
+			<p id=remaining-guesses>10</p>
+			<p>Letters Already Guessed</p>
+			<p id="letters-guessed"> </p>
+		</div>
 
-<h2>Press any key to get started</h2>
+		<div class="col-md-4">
+			<img src="" id="selected-image" class="img-responsive">
+			<audio id="animal-sound">
+  				<source id="animal-sound-source" src="" type="audio/mpeg">
+			</audio>
+		</div>
 
-<h3>Guess the name of an animal</h3>
-<img src="#" id="selected-image">
 
-<p>Wins</p>
-<p id="wins">
-<p>Losses</p>
-<p id="losses"></p>
-<p>Current Word</p>
-<h1 id="word"></h1>
-<p>Number of Guesses Remaining</p>
-<p id=remaining-guesses></p>
-<p>Letters Already Guessed</p>
-<p id="letters-guessed"></p>
-
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h1 id="warning"></h1>
+		</div>	
+		
+	</div>
 </div>
 
 
